@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)  # Autoriser les requêtes entre back-/frontend
+print("CORS enabled")
 
 # Récupère la clé du .env
 load_dotenv()
@@ -24,6 +25,8 @@ def home():
 @app.route("/search", methods=["POST"])
 def search_prices():
     try:
+        print("DEBUG")
+        print(request.json)
         # Récupérer les données envoyées par le frontend
         data = request.json
         categorie = data.get("categorie")
