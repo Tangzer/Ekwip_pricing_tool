@@ -1,1 +1,1 @@
-web: source env/bin/activate && python main.py
+web: ./python3 backend.py
