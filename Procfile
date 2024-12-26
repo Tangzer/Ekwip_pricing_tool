@@ -1,1 +1,1 @@
-web: python3 backend.py
+web: env/bin/python backend.py
