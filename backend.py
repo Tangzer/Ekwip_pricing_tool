@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-CORS(app)  # Autoriser les requêtes entre back-/frontend
+CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
 print("CORS enabled")
 
 # Récupère la clé du .env
@@ -17,7 +17,7 @@ else:
     print("Erreur : API_KEY non défini")
 
 # Route de test
-@app.route("/search", methods=["GET"])
+@app.route("/", methods=["GET"])
 def home():
     return jsonify({"message": "Backend is running!"})
 
