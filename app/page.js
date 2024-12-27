@@ -1,6 +1,15 @@
 "use client";
 import { useState } from "react";
 
+export default function ApiUrlTest() {
+  return (
+    <div>
+      <h1>Test de la variable d'environnement</h1>
+      <p>API URL : {process.env.NEXT_PUBLIC_API_URL || "Non défini"}</p>
+    </div>
+  );
+}
+
 export default function Home() {
   // Initialise le formulaire
   const [formData, setFormData] = useState({
