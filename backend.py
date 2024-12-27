@@ -17,7 +17,7 @@ else:
     print("Erreur : API_KEY non défini")
 
 # Route de test
-@app.route("/", methods=["GET"])
+@app.route("/search", methods=["GET"])
 def home():
     return jsonify({"message": "Backend is running!"})
 
@@ -27,7 +27,7 @@ def search_prices():
     print("POST request received")
     try:
         print("DEBUG")
-        print(request.json)
+        
         # Récupérer les données envoyées par le frontend
         data = request.json
         categorie = data.get("categorie")
