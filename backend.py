@@ -27,6 +27,9 @@ def search_prices():
     print("POST request received")
     try:
         print("DEBUG")
+        print("Requête POST reçue")
+        print("Headers:", request.headers)
+        print("JSON:", request.json)
         
         # Récupérer les données envoyées par le frontend
         data = request.json
@@ -57,6 +60,13 @@ def search_prices():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.after_request
+def after_request(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+    response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
+    return response
+
 # Extrait les prix des résultats de recherche
 def extract_prices_from_results(results):
     prices = []
@@ -76,4 +86,5 @@ def parse_price(text):
     return None
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
