@@ -23,8 +23,6 @@ def home():
 # Route principale
 @app.route("/search", methods=["POST"])
 def search_prices():
-    print("DEBUG")
-    print("POST request received")
     try:
         # Récupérer les données envoyées par le frontend
         data = request.json
