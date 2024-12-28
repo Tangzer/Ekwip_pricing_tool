@@ -55,13 +55,6 @@ def search_prices():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# @app.after_request
-# def after_request(response):
-#     response.headers["Access-Control-Allow-Origin"] = "*"
-#     response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
-#     response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
-#     return response
-
 # Extrait les prix des résultats de recherche
 def extract_prices_from_results(results):
     prices = []
@@ -79,7 +72,3 @@ def parse_price(text):
     if match:
         return float(match.group(1).replace(",", "."))
     return None
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
