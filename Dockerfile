@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . /app
 
 # Set environment variables
-ENV API_KEY=$API_KEY
+# ENV API_KEY=$API_KEY
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
