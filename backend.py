@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
-print("CORS enabled")
 
 # Récupère la clé du .env
 load_dotenv()
@@ -24,13 +23,9 @@ def home():
 # Route principale
 @app.route("/search", methods=["POST"])
 def search_prices():
+    print("DEBUG")
     print("POST request received")
     try:
-        print("DEBUG")
-        print("Requête POST reçue")
-        print("Headers:", request.headers)
-        print("JSON:", request.json)
-        
         # Récupérer les données envoyées par le frontend
         data = request.json
         categorie = data.get("categorie")
@@ -60,12 +55,12 @@ def search_prices():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.after_request
-def after_request(response):
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
-    response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
-    return response
+# @app.after_request
+# def after_request(response):
+#     response.headers["Access-Control-Allow-Origin"] = "*"
+#     response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+#     response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
+#     return response
 
 # Extrait les prix des résultats de recherche
 def extract_prices_from_results(results):
@@ -85,6 +80,6 @@ def parse_price(text):
         return float(match.group(1).replace(",", "."))
     return None
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 5000))
+#     app.run(host="0.0.0.0", port=port)
