@@ -43,7 +43,7 @@ Mettre en place un prototype fonctionnel permettant de suggérer automatiquement
 Tech :
 - Interface frontend = Next.js
 - Déploiement = Vercel
-- API = Python Flask & SerpAPI (--> imité à 100 requêtes/mois)
+- API = Gunicorn & SerpAPI (--> imité à 100 requêtes/mois)
 
 1. Saisie des données produit
     L'interface permet à un utilisateur d'entrer :
@@ -54,7 +54,7 @@ Tech :
     - Couleur
 
 2. Recherche de prix sur le web (Backend)
-    Endpoint API (serpAPI) en Python Flask :
+    Endpoint API (serpAPI) et Gunicorn :
     - Recevoir les données saisies (catégorie, marque, modèle, etc.).
     - Effectuer une recherche web
     - Scraper les résultats

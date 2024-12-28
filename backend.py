@@ -1,11 +1,11 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+# from flask import Flask, request, jsonify
+# from flask_cors import CORS
 from serpapi import GoogleSearch
 import os
 from dotenv import load_dotenv
 
-app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
+# app = Flask(__name__)
+# CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
 
 # Récupère la clé du .env
 load_dotenv()
