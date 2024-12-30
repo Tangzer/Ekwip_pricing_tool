@@ -31,7 +31,6 @@ def options_search():
 # Route principale
 @app.route("/search", methods=["POST"])
 def search_prices():
-    return jsonify({"message": "Allowed methods: POST only"})
     try:
         # Récupérer les données envoyées par le frontend
         data = request.json
@@ -80,6 +79,7 @@ def parse_price(text):
         return float(match.group(1).replace(",", "."))
     return None
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 5000))
+#     app.run(host="0.0.0.0", port=port)
+if __name__ == "__main__": app.run(debug=True)
