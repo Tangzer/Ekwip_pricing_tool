@@ -5,10 +5,11 @@ import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)
+
 #CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
 CORS(app, resources={
     r"/": {"origins": "*", "methods": ["GET"]},
-    r"/search": {"origins": "*", "methods": ["POST"]}
+    r"/search": {"origins": "*", "methods": ["POST", "OPTIONS"]}
 })
 
 # Récupère la clé du .env
@@ -19,16 +20,18 @@ if API_KEY:
 else:
     print("Erreur : API_KEY non défini")
 
-# Route de test
+# Route principale GET
 @app.route("/", methods=["GET"])
 def home():
     return jsonify({"message": "Backend is running!"})
 
+# Route OPTIONS pour gérer les pré-requêtes
 @app.route("/search", methods=["OPTIONS"])
 def options_search():
+    print("OPTIONS request received on /search")
     return "", 200
 
-# Route principale
+# Route principale POST
 @app.route("/search", methods=["POST"])
 def search_prices():
     try:
@@ -79,7 +82,18 @@ def parse_price(text):
         return float(match.group(1).replace(",", "."))
     return None
 
-# if __name__ == "__main__":
-#     port = int(os.environ.get("PORT", 5000))
-#     app.run(host="0.0.0.0", port=port)
-if __name__ == "__main__": app.run(debug=True)
+# Gestion des erreurs
+@app.errorhandler(405)
+def method_not_allowed(e):
+    print(f"405 Error: {request.method} not allowed on {request.path}")
+    return jsonify({"error": "Method not allowed"}), 405
+
+@app.errorhandler(404)
+def not_found(e):
+    print(f"404 Error: {request.path} not found")
+    return jsonify({"error": "Route not found"}), 404
+
+# Démarrage de l'application
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
