@@ -5,7 +5,11 @@ import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
+#CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
+CORS(app, resources={
+    r"/": {"origins": "*", "methods": ["GET"]},
+    r"/search": {"origins": "*", "methods": ["POST"]}
+})
 
 # Récupère la clé du .env
 load_dotenv()
