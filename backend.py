@@ -5,11 +5,7 @@ import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-#CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
-CORS(app, resources={
-    r"/": {"origins": "*", "methods": ["GET"]},
-    r"/search": {"origins": "*", "methods": ["POST"]}
-})
+CORS(app, resources={r"/*": {"origins": "*"}})  # Autoriser les requêtes entre back-/frontend
 
 # Récupère la clé du .env
 load_dotenv()
@@ -74,3 +70,7 @@ def parse_price(text):
     if match:
         return float(match.group(1).replace(",", "."))
     return None
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
