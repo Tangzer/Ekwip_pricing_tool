@@ -6,12 +6,6 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
-# Autoriser les requêtes entre back-/frontend
-# CORS(app, resources={
-#     r"/": {"origins": "*", "methods": ["GET"]},
-#     r"/search": {"origins": "*", "methods": ["POST", "OPTIONS"]}
-# })
-
 
 # Récupère la clé du .env
 load_dotenv()
@@ -94,9 +88,5 @@ def not_found(e):
     print(f"404 Error: {request.path} not found")
     return jsonify({"error": "Route not found"}), 404
 
-# Démarrage de l'application
-# if __name__ == "__main__":
-#     port = int(os.environ.get("PORT", 5000))
-#     app.run(host="0.0.0.0", port=port, debug=True)
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

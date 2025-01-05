@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-//import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -10,9 +9,6 @@ export default function Home() {
     annee: "",
     couleur: "",
   });
-
-  //const [errorMessage, setErrorMessage] = useState(""); // Pour gérer les erreurs
-  //const router = useRouter(); // Hook pour rediriger l'utilisateur
 
   // Fonction pour mettre à jour les champs
   const handleChange = (e) => {
@@ -119,11 +115,3 @@ export default function Home() {
     </div>
   );
 }
-
-        {/* <div style={{ marginTop: "30px", backgroundColor: "#2d3748", padding: "15px", borderRadius: "8px" }}>
-        <h2 style={{ color: "#63b3ed" }}>Résumé des données</h2>
-        <p><strong>Catégorie :</strong> {formData.categorie || "Non renseigné"}</p>
-        <p><strong>Marque :</strong> {formData.marque || "Non renseigné"}</p>
-        <p><strong>Modèle :</strong> {formData.modele || "Non renseigné"}</p>
-        <p><strong>Année :</strong> {formData.annee || "Non renseigné"}</p>
-        <p><strong>Couleur :</strong> {formData.couleur || "Non renseigné"}</p> */}
