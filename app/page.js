@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -11,8 +11,8 @@ export default function Home() {
     couleur: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState(""); // Pour gérer les erreurs
-  const router = useRouter(); // Hook pour rediriger l'utilisateur
+  //const [errorMessage, setErrorMessage] = useState(""); // Pour gérer les erreurs
+  //const router = useRouter(); // Hook pour rediriger l'utilisateur
 
   // Fonction pour mettre à jour les champs
   const handleChange = (e) => {

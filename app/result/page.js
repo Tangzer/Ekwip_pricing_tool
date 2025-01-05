@@ -2,6 +2,8 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 function ResultContent() {
   const searchParams = useSearchParams();
 
@@ -9,7 +11,6 @@ function ResultContent() {
   const [averagePrice, setAveragePrice] = useState("");
 
   useEffect(() => {
-    // Parse search params safely on the client
     const parsedFormData = JSON.parse(searchParams.get("formData") || "{}");
     const price = searchParams.get("average_price") || "";
 
@@ -28,7 +29,7 @@ function ResultContent() {
         textAlign: "center",
       }}
     >
-      <h1 style={{ color: "#63b3ed" }}>Résultat de l'évaluation</h1>
+      <h1 style={{ color: "#63b3ed" }}>Résultat de l&aposévaluation</h1>
       <div
         style={{
           maxWidth: "400px",
@@ -78,6 +79,8 @@ export default function Result() {
     </Suspense>
   );
 }
+
+
 
 
 // // "use client";
