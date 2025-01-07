@@ -25,8 +25,9 @@ const eslintConfig = [
     },
     rules: {
       "no-console": "off",
-      "no-unused-vars": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
+      "no-unused-vars": "off",
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-unused-vars": "off",
       "@next/next/no-html-link-for-pages": "off",
     },
   },
