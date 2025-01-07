@@ -29,7 +29,7 @@ function ResultContent() {
         textAlign: "center",
       }}
     >
-      <h1 style={{ color: "#63b3ed" }}>Résultat de l'&apos;évaluation</h1>
+      <h1 style={{ color: "#63b3ed" }}>Résultat de l'évaluation</h1>
       <div
         style={{
           maxWidth: "400px",
