@@ -37,7 +37,7 @@ export default function Home() {
         // Redirection vers "/result" avec les paramètres encodés dans l'URL
         const params = new URLSearchParams({
           formData: JSON.stringify(formData),
-          prices: JSON.stringify(data.prices),
+          prices: data.prices,
           average_price: parseFloat(data.average_price).toFixed(2) // Valeur retournée par le backend, arrondi à 2 décimales
         });
         window.location.href = `/result?${params.toString()}`;
