@@ -1,4 +1,5 @@
 URL frontend : https://ekwip-pricing-tool.vercel.app
+
 URL backend : https://ekwippricingtool-production.up.railway.app
 
 ## Ekwip Price Tool 
@@ -35,9 +36,14 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, install the dependancies :
     - install npm
-    - install node
+    - install dependancies :
+```bash
+        npm install
+```
     - install requirements :
+```bash 
         pip install -r requirements.txt
+```
 
 Run the frontend locally :
 ```bash
@@ -51,4 +57,6 @@ bun dev
 ```
 
 Run the backend locally :
-    python backend.py
+```bash    
+python backend.py
+```
