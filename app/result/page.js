@@ -71,7 +71,7 @@ function ResultContent() {
         {prices.length > 0 ? (
           <ul style={{ listStyle: "none", padding: 0 }}>
             {prices.map((price, index) => (
-              <li key={index} style={{ fontSize: "18px", margin: "5px 0" }}>
+              <li key={index} style={{ fontSize: "24px",fontWeight: "bold", margin: "5px 0" }}>
                 {price} €
               </li>
             ))}
