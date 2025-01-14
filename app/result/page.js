@@ -12,17 +12,21 @@ function ResultContent() {
   const [prices, setPrices] = useState([]);
   const [averagePrice, setAveragePrice] = useState("");
 
-  useEffect(() => {$
+  useEffect(() => {
     // Parsing query parameters
-    const parsedFormData = JSON.parse(searchParams.get("formData") || "{}");
-    const pricesString = searchParams.get("prices") || "[]";
-    const pricesArray = JSON.parse(pricesString);
-    const averagePrice = searchParams.get("average_price") || "";
-
-    // Updating states
-    setFormData(parsedFormData);
-    setPrices(pricesArray);
-    setAveragePrice(averagePrice);
+    try {
+      const parsedFormData = JSON.parse(searchParams.get("formData") || "{}");
+      const pricesString = searchParams.get("prices") || "[]"; // Get prices as JSON string
+      const pricesArray = JSON.parse(pricesString); // Parse JSON string into an array
+      const averagePrice = searchParams.get("average_price") || "";
+  
+      // Update state
+      setFormData(parsedFormData);
+      setPrices(pricesArray);
+      setAveragePrice(averagePrice);
+    } catch (error) {
+      console.error("Error parsing query parameters:", error);
+    }
   }, [searchParams]);
 
   return (

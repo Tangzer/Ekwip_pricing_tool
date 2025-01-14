@@ -57,6 +57,7 @@ def search_prices():
             average_price = None
             prices_query = "[]"
 
+        print(prices_query)
         return jsonify({"average_price": average_price, "prices": prices_query})
  
     except Exception as e:
