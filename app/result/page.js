@@ -7,16 +7,19 @@ export const dynamic = "force-dynamic";
 function ResultContent() {
   const searchParams = useSearchParams();
 
+  // Initializing
   const [formData, setFormData] = useState({});
-  const pricesString = searchParams.get("prices_query") || "[]";
-  const pricesArray = JSON.parse(pricesString);
+  const [prices, setPrices] = useState([]);
   const [averagePrice, setAveragePrice] = useState("");
 
-  useEffect(() => {
+  useEffect(() => {$
+    // Parsing query parameters
     const parsedFormData = JSON.parse(searchParams.get("formData") || "{}");
-    const prices = searchParams.get("prices_query") || "";
+    const pricesString = searchParams.get("prices") || "[]";
+    const pricesArray = JSON.parse(pricesString);
     const averagePrice = searchParams.get("average_price") || "";
 
+    // Updating states
     setFormData(parsedFormData);
     setPrices(pricesArray);
     setAveragePrice(averagePrice);
