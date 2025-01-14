@@ -8,14 +8,18 @@ function ResultContent() {
   const searchParams = useSearchParams();
 
   const [formData, setFormData] = useState({});
+  const pricesString = searchParams.get("prices") || "[]";
+  const pricesArray = JSON.parse(pricesString);
   const [averagePrice, setAveragePrice] = useState("");
 
   useEffect(() => {
     const parsedFormData = JSON.parse(searchParams.get("formData") || "{}");
-    const price = searchParams.get("average_price") || "";
+    const prices = searchParams.get("prices") || "";
+    const averagePrice = searchParams.get("average_price") || "";
 
     setFormData(parsedFormData);
-    setAveragePrice(price);
+    setPrices(pricesArray);
+    setAveragePrice(averagePrice);
   }, [searchParams]);
 
   return (
@@ -56,6 +60,18 @@ function ResultContent() {
           <strong>Couleur :</strong> {formData.couleur || "Non renseigné"}
         </p>
 
+        <h2 style={{ color: "#63b3ed", marginTop: "20px" }}>Prix trouvés :</h2>
+        {prices.length > 0 ? (
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            {prices.map((price, index) => (
+              <li key={index} style={{ fontSize: "18px", margin: "5px 0" }}>
+                {price} €
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p style={{ fontSize: "24px", fontWeight: "bold" }}>Non disponible</p>
+        )}
         <h2 style={{ color: "#63b3ed", marginTop: "20px" }}>Prix estimé :</h2>
         <p style={{ fontSize: "24px", fontWeight: "bold" }}>
           {averagePrice ? `${averagePrice} €` : "Non disponible"}

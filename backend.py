@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect, url_for
 from flask_cors import CORS
 from serpapi import GoogleSearch
 import os
 from dotenv import load_dotenv
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -51,11 +52,17 @@ def search_prices():
         # Calculer la moyenne
         if prices:
             average_price = sum(prices) / len(prices)
+            prices_query = json.dumps(prices)
         else:
             average_price = None
+            prices_query = "[]"
 
-        return jsonify({"average_price": average_price, "prices": prices})
-
+        #return jsonify({"average_price": average_price, "prices": prices_query})
+        return redirect(url_for(
+        "result_page",
+        prices=prices_query,
+        average_price=average_price
+        ))
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
