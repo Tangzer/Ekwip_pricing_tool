@@ -8,13 +8,13 @@ function ResultContent() {
   const searchParams = useSearchParams();
 
   const [formData, setFormData] = useState({});
-  const pricesString = searchParams.get("prices") || "[]";
+  const pricesString = searchParams.get("prices_query") || "[]";
   const pricesArray = JSON.parse(pricesString);
   const [averagePrice, setAveragePrice] = useState("");
 
   useEffect(() => {
     const parsedFormData = JSON.parse(searchParams.get("formData") || "{}");
-    const prices = searchParams.get("prices") || "";
+    const prices = searchParams.get("prices_query") || "";
     const averagePrice = searchParams.get("average_price") || "";
 
     setFormData(parsedFormData);
