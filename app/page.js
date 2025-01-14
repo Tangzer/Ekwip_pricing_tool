@@ -27,18 +27,17 @@ export default function Home() {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
       
       if (response.ok) {
-        // Redirection vers /result avec les paramètres encodés dans l'URL
+        // Redirection vers "/result" avec les paramètres encodés dans l'URL
         const params = new URLSearchParams({
           formData: JSON.stringify(formData),
+          prices: JSON.stringify(data.prices),
           average_price: parseFloat(data.average_price).toFixed(2) // Valeur retournée par le backend, arrondi à 2 décimales
         });
         window.location.href = `/result?${params.toString()}`;

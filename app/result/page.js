@@ -13,14 +13,14 @@ function ResultContent() {
   const [averagePrice, setAveragePrice] = useState("");
 
   useEffect(() => {
-    // Parsing query parameters
+    // Parsing parameters
     try {
       const parsedFormData = JSON.parse(searchParams.get("formData") || "{}");
-      const pricesString = searchParams.get("prices") || "[]"; // Get prices as JSON string
-      const pricesArray = JSON.parse(pricesString); // Parse JSON string into an array
+      const pricesString = searchParams.get("prices") || "[]";
+      const pricesArray = JSON.parse(pricesString);
       const averagePrice = searchParams.get("average_price") || "";
   
-      // Update state
+      // Updatig state
       setFormData(parsedFormData);
       setPrices(pricesArray);
       setAveragePrice(averagePrice);
