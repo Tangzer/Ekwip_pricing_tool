@@ -57,8 +57,12 @@ def search_prices():
             average_price = None
             prices_query = "[]"
 
-        return jsonify({"average_price": average_price, "prices": prices_query})
-
+        #return jsonify({"average_price": average_price, "prices": prices_query})
+        return redirect(url_for(
+                "result_page",
+                prices=prices_query,
+                average_price=average_price
+            ))
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
