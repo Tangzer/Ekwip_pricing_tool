@@ -35,14 +35,17 @@ Tech :
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 First, install the dependancies :
+    
     - install npm
+    
     - install dependancies :
 ```bash
-        npm install
+npm install
 ```
     - install requirements :
+
 ```bash 
-        pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Run the frontend locally :
